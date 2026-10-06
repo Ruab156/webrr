@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="山徑日光｜台灣步道健行推廣活動，探索山林風景、特色步道與完整健行行程。">
+  <title>山徑日光｜步道健行推廣網站</title>
+  
+  <style>
+    :root{
+      --green:#214f3b; --green2:#376b50; --sage:#e8f0e8;
+      --cream:#f8f5ed; --gold:#d7a84b; --text:#243229;
+      --white:#fff; --shadow:0 14px 40px rgba(29,55,40,.12);
+      --radius:22px;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--text);background:var(--cream);line-height:1.75}
+    img{display:block;width:100%;object-fit:cover}
+    a{text-decoration:none;color:inherit}
+    
+    .container{width:min(1120px,92%);margin:auto}
+    .nav{position:absolute;z-index:10;left:0;right:0;top:0;color:#fff}
+    .nav-inner{height:78px;display:flex;align-items:center;justify-content:space-between}
+    .logo{font-weight:900;font-size:1.25rem;letter-spacing:.08em}
+    .logo span{color:#f1c96d}
+    .nav-links{display:flex;gap:28px;font-size:.95rem}
+    .nav-links a{opacity:.92;transition:.2s}.nav-links a:hover{color:#f1c96d}
+    .menu{display:none;background:none;border:1px solid rgba(255,255,255,.6);color:#fff;padding:7px 10px;border-radius:8px}
+    
+    .hero{min-height:720px;position:relative;color:#fff;display:flex;align-items:center;
+      background:linear-gradient(90deg,rgba(11,31,21,.72),rgba(11,31,21,.22)),url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1800&q=85") center/cover}
+    .hero-content{max-width:680px;padding:100px 0 70px}
+    .eyebrow{color:#f1c96d;font-weight:800;letter-spacing:.15em;margin-bottom:12px}
+    h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.12;margin-bottom:20px}
+    .hero p{font-size:clamp(1rem,2vw,1.2rem);max-width:590px;color:#f2f5f1}
+    .buttons{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 24px;border-radius:999px;font-weight:800;cursor:pointer;border:0}
+    .btn-primary{background:var(--gold);color:#263021}.btn-light{border:1px solid rgba(255,255,255,.7);color:#fff}
+    
+    section{padding:88px 0}.section-head{text-align:center;max-width:700px;margin:0 auto 42px}
+    .section-head .eyebrow{color:var(--green2);font-size:.85rem}.section-head h2{font-size:clamp(1.9rem,4vw,3rem);line-height:1.2;margin-bottom:12px}
+    .section-head p{color:#617067}
+    .intro-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
+    .intro-photo{height:480px;border-radius:var(--radius);box-shadow:var(--shadow)}
+    .intro-copy h3{font-size:1.7rem;color:var(--green);margin-bottom:12px}.intro-copy p{color:#5f6c64;margin-bottom:18px}
+    .check-list{list-style:none;display:grid;gap:10px}.check-list li:before{content:"✓";color:var(--green2);font-weight:900;margin-right:10px}
+    
+    .features{background:var(--sage)}
+    .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .card{background:#fff;border-radius:var(--radius);padding:28px;box-shadow:0 8px 25px rgba(29,55,40,.07)}
+    .icon{font-size:2rem;margin-bottom:10px}.card h3{color:var(--green);margin-bottom:7px}.card p{color:#66736b;font-size:.95rem}
+    
+    .route-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    .route-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
+    .route-card img{height:220px}.route-body{padding:22px}.tag{display:inline-block;background:#edf3ed;color:var(--green2);padding:4px 10px;border-radius:999px;font-size:.78rem;font-weight:800;margin-bottom:8px}
+    .route-body h3{margin-bottom:7px}.route-meta{display:flex;gap:14px;color:#6d776f;font-size:.88rem;flex-wrap:wrap}
+    
+    .schedule{background:var(--green);color:#fff}.schedule .section-head p{color:#cddbd2}.schedule .section-head .eyebrow{color:#f1c96d}.schedule .section-head h2{color:#fff}
+    .timeline{max-width:820px;margin:auto;display:grid;gap:14px}.timeline-item{display:grid;grid-template-columns:110px 1fr;gap:20px;background:rgba(255,255,255,.09);padding:18px 22px;border-radius:16px}.time{color:#f1c96d;font-weight:900}.timeline-item p{color:#d9e3dd}
+    
+    .gear-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}.gear-box{background:#fff;padding:30px;border-radius:var(--radius);box-shadow:var(--shadow)}.gear-box h3{color:var(--green);margin-bottom:15px}.gear-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;list-style:none}.gear-list li{padding:9px 12px;background:#f4f6f2;border-radius:10px}
+    
+    .register{background:linear-gradient(135deg,#edf3ea,#fbf7eb)}.form{max-width:760px;margin:auto;background:#fff;padding:36px;border-radius:var(--radius);box-shadow:var(--shadow)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-weight:800;font-size:.92rem}.field input,.field select,.field textarea{border:1px solid #d9e0da;border-radius:11px;padding:12px 13px;font:inherit;background:#fff}.field textarea{min-height:120px;resize:vertical}.consent{font-size:.84rem;color:#6b756e;margin:15px 0}.form .btn{width:100%;margin-top:5px}
+    footer{background:#172b21;color:#cbd7cf;padding:32px 0;text-align:center;font-size:.9rem}.footer-title{color:#fff;font-weight:900;margin-bottom:4px}
+    
+    @media(max-width:800px){
+      .nav-links{display:none}.menu{display:block}.nav.open .nav-links{display:flex;position:absolute;top:70px;left:4%;right:4%;background:#173426;padding:18px;border-radius:14px;flex-direction:column;gap:12px}
+      .hero{min-height:650px}.intro-grid,.gear-grid{grid-template-columns:1fr}.feature-grid,.route-grid{grid-template-columns:1fr 1fr}
+      .intro-photo{height:360px}.timeline-item{grid-template-columns:80px 1fr}
+    }
+    @media(max-width:560px){
+      section{padding:65px 0}.hero-content{padding-top:120px}.feature-grid,.route-grid,.form-grid{grid-template-columns:1fr}
+      .field.full{grid-column:auto}.gear-list{grid-template-columns:1fr}.form{padding:23px}.intro-photo{height:300px}.hero{min-height:610px}
+    }
+  </style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">山徑<span>日光</span></a>
+    <button class="menu" id="menuBtn" aria-label="開啟選單">☰</button>
+    <nav class="nav-links">
+      <a href="#about">活動介紹</a><a href="#trails">特色步道</a><a href="#schedule">行程</a><a href="#gear">裝備</a><a href="#register">立即報名</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="container hero-content">
+    <div class="eyebrow">HIKING • NATURE • CONNECTION</div>
+    <h1>走進山林，<br>把風景變成回憶。</h1>
+    <p>一趟適合親友與家庭的輕健行體驗。遠離城市喧囂，沿著森林步道慢慢走，讓每一步都靠近自然。</p>
+    <div class="buttons"><a class="btn btn-primary" href="#register">我要報名</a><a class="btn btn-light" href="#trails">探索步道 ↓</a></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container intro-grid">
+    <img class="intro-photo" src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1000&q=85" alt="森林步道健行風景">
+    <div class="intro-copy">
+      <div class="eyebrow">ABOUT THE JOURNEY</div>
+      <h3>不只是登山，而是重新感受山林。</h3>
+      <p>我們設計低門檻、重體驗的健行活動，從集合、暖身、步道探索到山林午餐，讓第一次接觸健行的人也能安心享受。</p>
+      <ul class="check-list">
+        <li>專業領隊帶路，掌握步道節奏</li>
+        <li>適合初階健行者與親子同行</li>
+        <li>沿途安排觀景與拍照停留點</li>
+        <li>小團制活動，保留自在的山林體驗</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-head"><div class="eyebrow">WHY JOIN US</div><h2>一次健行，收穫四種體驗</h2><p>把運動、風景、朋友與生活感，放進同一趟旅程。</p></div>
+    <div class="feature-grid">
+      <article class="card"><div class="icon">🌲</div><h3>森林療癒</h3><p>穿梭林蔭與自然氣息，在綠意中放慢腳步，享受暫時離開城市的片刻。</p></article>
+      <article class="card"><div class="icon">📷</div><h3>風景攝影</h3><p>精選視野開闊的停留點，留下山景、雲海與旅伴一起走過的精彩畫面。</p></article>
+      <article class="card"><div class="icon">🥾</div><h3>安心健行</h3><p>活動前提供裝備建議與行前提醒，現場由領隊掌握路線與隊伍狀況。</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="trails">
+  <div class="container">
+    <div class="section-head"><div class="eyebrow">TRAILS</div><h2>本季推薦步道</h2><p>從森林小徑到山景稜線，挑選適合不同體力與期待的路線。</p></div>
+    <div class="route-grid">
+      <article class="route-card"><img src="https://images.unsplash.com/photo-1552083375-1447ce886485?auto=format&fit=crop&w=900&q=85" alt="森林步道"><div class="route-body"><span class="tag">入門推薦</span><h3>森林秘境線</h3><div class="route-meta"><span>⏱ 約 3 小時</span><span>↗ 低難度</span></div></div></article>
+      <article class="route-card"><img src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=85" alt="山景步道"><div class="route-body"><span class="tag">人氣路線</span><h3>雲嶺觀景線</h3><div class="route-meta"><span>⏱ 約 4.5 小時</span><span>↗ 中難度</span></div></div></article>
+      <article class="route-card"><img src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=85" alt="山稜風景"><div class="route-body"><span class="tag">挑戰進階</span><h3>山稜日光線</h3><div class="route-meta"><span>⏱ 約 6 小時</span><span>↗ 中高難度</span></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="schedule" id="schedule">
+  <div class="container">
+    <div class="section-head"><div class="eyebrow">ONE DAY ITINERARY</div><h2>一日健行行程</h2><p>不趕路、不硬走，把時間留給風景與同行的人。</p></div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="time">08:00</div><div><strong>集合報到</strong><p>確認人員、裝備與今日路線，簡單暖身。</p></div></div>
+      <div class="timeline-item"><div class="time">09:00</div><div><strong>步道出發</strong><p>從林間緩坡開始，依隊伍狀況調整步行節奏。</p></div></div>
+      <div class="timeline-item"><div class="time">11:00</div><div><strong>觀景休息</strong><p>在景觀點補充水分、拍照並享受山林景色。</p></div></div>
+      <div class="timeline-item"><div class="time">12:00</div><div><strong>山林午餐</strong><p>於指定休息區享用自備午餐，補充體力。</p></div></div>
+      <div class="timeline-item"><div class="time">15:00</div><div><strong>平安返程</strong><p>完成今日路線，集合點分享旅程照片與心得。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="gear">
+  <div class="container">
+    <div class="section-head"><div class="eyebrow">GET READY</div><h2>健行裝備建議</h2><p>依天氣與路線調整，以下是初階健行的基本清單。</p></div>
+    <div class="gear-grid">
+      <div class="gear-box"><h3>🎒 必備裝備</h3><ul class="gear-list"><li>健行鞋／運動鞋</li><li>飲用水 1–2 L</li><li>輕量背包</li><li>防曬用品</li><li>雨具</li><li>個人藥品</li></ul></div>
+      <div class="gear-box"><h3>🌤 建議準備</h3><ul class="gear-list"><li>薄外套／排汗衣</li><li>帽子與墨鏡</li><li>行動電源</li><li>簡單能量補給</li><li>毛巾／濕紙巾</li><li>垃圾袋</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="register" id="register">
+  <div class="container">
+    <div class="section-head"><div class="eyebrow">JOIN THE HIKE</div><h2>報名你的下一趟山林旅程</h2><p>填寫資料後，我們將與你確認活動日期與集合資訊。</p></div>
+    <form class="form" id="signupForm">
+      <div class="form-grid">
+        <div class="field"><label for="name">姓名 *</label><input id="name" required placeholder="請輸入姓名"></div>
+        <div class="field"><label for="phone">手機 *</label><input id="phone" type="tel" required placeholder="09xxxxxxxx"></div>
+        <div class="field"><label for="email">Email *</label><input id="email" type="email" required placeholder="you@example.com"></div>
+        <div class="field"><label for="people">參加人數</label><select id="people"><option>1 人</option><option>2 人</option><option>3 人</option><option>4 人</option><option>5 人以上</option></select></div>
+        <div class="field full"><label for="route">想參加的路線</label><select id="route"><option>森林秘境線｜入門</option><option>雲嶺觀景線｜中難度</option><option>山稜日光線｜進階</option></select></div>
+        <div class="field full"><label for="note">備註</label><textarea id="note" placeholder="例如：飲食需求、同行孩童、希望安排的日期等"></textarea></div>
+      </div>
+      <p class="consent">送出表單即表示同意我們使用上述資料聯絡活動報名事宜。本示範網站不會實際傳送資料至後端。</p>
+      <button class="btn btn-primary" type="submit">送出報名資料</button>
+      <p id="formMsg" style="text-align:center;margin-top:12px;font-weight:800;"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container"><div class="footer-title">山徑日光｜Walk More, Feel More.</div><div>探索自然，也把時間留給重要的人。</div></div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  
+  // 開關手機版選單
+  document.getElementById('menuBtn').addEventListener('click', () => nav.classList.toggle('open'));
+  
+  // 點擊導覽列連結後自動收起手機版選單
+  document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+  
+  // 處理表單提交
+  document.getElementById('signupForm').addEventListener('submit', e => {
+    e.preventDefault();
+    document.getElementById('formMsg').textContent = '報名資料已收到！這是示範表單，尚未連接實際後端。';
+    document.getElementById('formMsg').style.color = '#376b50';
+    e.target.reset();
+  });
+</script>
+</body>
+</html>
