@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rurr 山徑日光有限公司 | 戶外風險控管與企業賦能</title>
+    <meta name="description" content="將硬核的登山知識與野外求生技術，轉化為具備高投資報酬率的商業賦能模組，全面升級企業組織的風險控管與執行力。">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Noto Sans TC & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans TC', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e', // Emerald
+                            600: '#16a34a',
+                            900: '#14532d',
+                            dark: '#0f172a', // Slate 900
+                            darker: '#020617', // Slate 950
+                            accent: '#f59e0b', // Amber (Sunlight)
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles for aesthetics */
+        body {
+            background-color: #020617; /* Slate 950 */
+            color: #f8fafc;
+        }
+        .glass-nav {
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.6) 0%, rgba(2, 6, 23, 0.95) 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(34, 197, 94, 0.2);
+            border-color: rgba(34, 197, 94, 0.5);
+        }
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #22c55e, #10b981);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-brand-500 to-emerald-700 flex items-center justify-center shadow-lg shadow-brand-500/20">
+                        <i class="fa-solid fa-mountain-sun text-white text-xl"></i>
+                    </div>
+                    <a href="#" class="font-bold text-xl tracking-wider">
+                        山徑日光 <span class="text-brand-500 font-light text-sm ml-1 uppercase tracking-widest hidden sm:inline">Rurr</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">關於我</a>
+                    <a href="#solutions" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">解決方案</a>
+                    <a href="#portfolio" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">實戰案例</a>
+                    <a href="#blog" class="text-gray-300 hover:text-white transition-colors text-sm font-medium">技術洞見</a>
+                    <a href="#contact" class="bg-brand-500 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full text-sm font-semibold transition-all shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50">
+                        預約諮詢
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-b border-gray-800">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">關於我</a>
+                <a href="#solutions" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">解決方案</a>
+                <a href="#portfolio" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">實戰案例</a>
+                <a href="#blog" class="block px-3 py-3 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">技術洞見</a>
+                <a href="#contact" class="block px-3 py-3 mt-4 text-center rounded-md text-base font-bold text-white bg-brand-500 hover:bg-brand-600">預約諮詢</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Mountain Peak" class="w-full h-full object-cover object-center opacity-40">
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+
+        <!-- Content -->
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto mt-16">
+            <span class="text-brand-500 font-semibold tracking-[0.2em] text-sm md:text-base uppercase mb-4 block">Risk Management x Data Tech x Business</span>
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
+                從極限生存到 <br class="hidden md:block"/>
+                <span class="text-gradient">高階商業實戰</span>
+            </h1>
+            <p class="text-lg md:text-2xl text-gray-300 mb-10 max-w-3xl mx-auto font-light leading-relaxed">
+                將硬核的野外決策與現代數據科技，轉化為具備高 ROI 的商業賦能模組。鍛鍊無懼市場風雨的強韌戰隊。
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#solutions" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all shadow-lg shadow-brand-500/30">
+                    探索企業專屬突圍方案
+                </a>
+                <a href="#about" class="bg-transparent border border-gray-500 hover:border-white text-white px-8 py-4 rounded-full text-lg font-medium transition-all hover:bg-white/5">
+                    了解 Rurr 的極限哲學
+                </a>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce hidden md:block">
+            <a href="#features" class="text-gray-400 hover:text-white">
+                <i class="fa-solid fa-arrow-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Core Values Section -->
+    <section id="features" class="py-20 bg-brand-darker border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Value 1 -->
+                <div class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition duration-300">
+                    <div class="w-14 h-14 bg-brand-500/20 rounded-xl flex items-center justify-center mb-6 text-brand-500">
+                        <i class="fa-solid fa-shield-halved text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">系統化風險控管</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        打破傳統經驗法則，將容錯率極低的極限環境思維，轉化為企業內部的風險評估系統，大幅降低營運決策的盲點。
+                    </p>
+                </div>
+                <!-- Value 2 -->
+                <div class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition duration-300">
+                    <div class="w-14 h-14 bg-brand-accent/20 rounded-xl flex items-center justify-center mb-6 text-brand-accent">
+                        <i class="fa-solid fa-satellite-dish text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">數據與科技導入</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        結合現代化通訊科技、科學化氣象模型與追蹤機制，以數據驅動為核心，讓每一次的後勤佈署與專案執行都具備最高精準度。
+                    </p>
+                </div>
+                <!-- Value 3 -->
+                <div class="p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition duration-300">
+                    <div class="w-14 h-14 bg-blue-500/20 rounded-xl flex items-center justify-center mb-6 text-blue-400">
+                        <i class="fa-solid fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">高效商業賦能</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        以「產出具體行為改變」為指標。協助團隊在資源稀缺與資訊不對稱下做出果斷決策，極大化工作效率與投資報酬率。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-brand-dark relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none opacity-20">
+            <svg class="absolute -top-24 -right-24 w-96 h-96 text-brand-500" fill="currentColor" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50"></circle></svg>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <!-- Image Side -->
+                <div class="lg:w-5/12 relative">
+                    <div class="relative rounded-2xl overflow-hidden border-2 border-white/10 shadow-2xl">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Rurr - 戶外探勘與山域嚮導" class="w-full h-auto object-cover aspect-[4/5] grayscale hover:grayscale-0 transition duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-brand-darker via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6">
+                            <div class="bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/10">
+                                <h4 class="text-white font-bold text-lg mb-1">Rurr</h4>
+                                <p class="text-brand-500 text-sm">山徑日光有限公司 創辦人</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Stats badge -->
+                    <div class="absolute -right-6 top-12 bg-white text-gray-900 p-4 rounded-xl shadow-xl hidden md:block">
+                        <p class="font-black text-3xl mb-0 leading-none">10<span class="text-brand-500">+</span></p>
+                        <p class="text-xs font-bold uppercase tracking-wider text-gray-500">Years Experience</p>
+                    </div>
+                </div>
+
+                <!-- Text Side -->
+                <div class="lg:w-7/12">
+                    <div class="inline-block px-3 py-1 rounded-full bg-brand-500/10 text-brand-500 text-sm font-semibold mb-6 border border-brand-500/20">
+                        關於我 | About Rurr
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">走入山林不僅是挑戰極限，<br class="hidden md:block"/>更是精準的風險控管與系統化決策。</h2>
+                    
+                    <div class="space-y-5 text-gray-300 font-light leading-relaxed">
+                        <p>
+                            擁有 10 年專業戶外探勘與山域嚮導經驗。身為持有<strong class="text-white font-semibold px-1">「台灣山岳嚮導證」</strong>且具備 <strong class="text-white font-semibold px-1">WFR（野外第一反應員）</strong>資格的專業嚮導，我致力於將前瞻性的安全思維與現代化管理導入台灣的戶外環境。
+                        </p>
+                        <p>
+                            在瞬息萬變的極端地帶，具備迅速釐清現況、果斷解決問題的魄力是維繫安全的絕對關鍵。過去十年間，我受邀擔任教育部體育署認證機構的嚮導培訓教練，並於台大、政大等大專院校擔任技術講師，專注於建立學員的獨立判斷與危機處理能力。
+                        </p>
+                        <p>
+                            同時，我對<span class="text-brand-accent">科技與數據應用</span>充滿熱情。在推動「野外醫學與山難留守制度」專案中，我積極結合現代化通訊科技、科學化氣象模型與系統化的追蹤機制，打破傳統僅仰賴經驗法則的侷限，讓風險評估與後勤救援具備更高的精準度與效率。
+                        </p>
+                        <p class="border-l-4 border-brand-500 pl-4 py-2 mt-6 text-white font-medium italic">
+                            「未來，山徑日光將持續走在產業前端。結合科技工具與頂尖的野外實務技術，為每一位渴望探索未知的人與企業，打造最專業、創新且值得信賴的指引。」
+                        </p>
+                    </div>
+
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        <span class="px-3 py-1 bg-gray-800 rounded-lg text-xs text-gray-400 border border-gray-700"><i class="fa-solid fa-check text-brand-500 mr-2"></i>台灣山岳嚮導證</span>
+                        <span class="px-3 py-1 bg-gray-800 rounded-lg text-xs text-gray-400 border border-gray-700"><i class="fa-solid fa-check text-brand-500 mr-2"></i>WFR 野外第一反應員</span>
+                        <span class="px-3 py-1 bg-gray-800 rounded-lg text-xs text-gray-400 border border-gray-700"><i class="fa-solid fa-check text-brand-500 mr-2"></i>體育署認證機構教練</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section id="solutions" class="py-24 bg-brand-darker">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-3 py-1 rounded-full bg-brand-500/10 text-brand-500 text-sm font-semibold mb-4 border border-brand-500/20">
+                    解決方案 | Solutions
+                </div>
+                <h2 class="text-3xl md:text-5xl font-bold mb-6">企業專屬突圍方案</h2>
+                <p class="text-gray-400 text-lg leading-relaxed">
+                    在容錯率極低的極限山林中；商業戰場亦然。我們將硬核求生技術轉化為商業賦能模組，全面升級組織的執行力。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Solution 1 -->
+                <div class="bg-brand-dark rounded-2xl p-8 border border-white/5 card-hover relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-500/5 rounded-full blur-2xl group-hover:bg-brand-500/20 transition-all"></div>
+                    <div class="text-brand-500 mb-6">
+                        <i class="fa-solid fa-users-gear text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">核心團隊危機管理</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 h-24">
+                        將野外求生中的「資源最佳化分配、危機排除、系統化風險評估」導入企業訓練。協助團隊打破慣性，鍛鍊在資源稀缺下的果斷決策力，減少內部溝通摩擦。
+                    </p>
+                    <ul class="space-y-2 mb-8">
+                        <li class="text-sm text-gray-300 flex items-start gap-2"><i class="fa-solid fa-angle-right text-brand-500 mt-1"></i> 資源最佳化分配演練</li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2"><i class="fa-solid fa-angle-right text-brand-500 mt-1"></i> 資訊不對稱下的決策制定</li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2"><i class="fa-solid fa-angle-right text-brand-500 mt-1"></i> 跨部門突發狀況排除</li>
+                    </ul>
+                </div>
+
+                <!-- Solution 2 -->
+                <div class="bg-brand-dark rounded-2xl p-8 border border-brand-500/30 card-hover relative overflow-hidden group shadow-lg shadow-brand-500/10 transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-brand-accent/5 rounded-full blur-2xl group-hover:bg-brand-accent/20 transition-all"></div>
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-500 to-emerald-300"></div>
+                    <div class="text-brand-accent mb-6">
+                        <i class="fa-solid fa-chess-knight text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">高階主管逆境領導力</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 h-24">
+                        專為企業決策者設計的極限領導力專案。透過高壓模擬與真實戶外情境，重新鍛鍊在極端壓力下的心理韌性、敏捷反應與帶領團隊突破逆境的領袖特質。
+                    </p>
+                    <ul class="space-y-2 mb-8">
+                        <li class="text-sm text-gray-300 flex items-start gap-2"><i class="fa-solid fa-angle-right text-brand-accent mt-1"></i> 壓力測試與心理韌性建立</li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2"><i class="fa-solid fa-angle-right text-brand-accent mt-1"></i> 極限情境的敏捷領導</li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2"><i class="fa-solid fa-angle-right text-brand-accent mt-1"></i> 複雜問題的系統化拆解</li>
+                    </ul>
+                </div>
+
+                <!-- Solution 3 -->
+                <div class="bg-brand-dark rounded-2xl p-8 border border-white/5 card-hover relative overflow-hidden group">
+                    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl group-hover:bg-blue-500/20 transition-all"></div>
+                    <div class="text-blue-400 mb-6">
+                        <i class="fa-solid fa-sliders text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">企業私有客製化服務</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed mb-6 h-24">
+                        以「產出具體行為改變」為核心指標，透過深度診斷，為企業建構專屬的私有化解決方案。精準對齊營運目標，確保每一分預算都能轉化為實質戰鬥力。
+                    </p>
+                    <ul class="space-y-2 mb-8">
+                        <li class="text-sm text-gray-300 flex items-start gap-2"><i class="fa-solid fa-angle-right text-blue-400 mt-1"></i> 組織現況深度診斷</li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2"><i class="fa-solid fa-angle-right text-blue-400 mt-1"></i> 對齊營運目標客製化模組</li>
+                        <li class="text-sm text-gray-300 flex items-start gap-2"><i class="fa-solid fa-angle-right text-blue-400 mt-1"></i> 導入後成效追蹤與優化</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <a href="#contact" class="inline-flex items-center gap-2 bg-transparent border-2 border-brand-500 text-brand-500 hover:bg-brand-500 hover:text-white px-8 py-3 rounded-full font-semibold transition-all">
+                    <i class="fa-solid fa-file-arrow-down"></i> 索取企業服務簡報與規格書
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-24 bg-brand-dark border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                <div class="max-w-2xl">
+                    <div class="inline-block px-3 py-1 rounded-full bg-brand-500/10 text-brand-500 text-sm font-semibold mb-4 border border-brand-500/20">
+                        實戰案例 | Portfolio & Cases
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">實證數據，將未知轉化為可控</h2>
+                    <p class="text-gray-400">展示我們如何透過科技、模組化訓練，為企業與機構帶來具體的改變與戰鬥力提升。</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Case 1 -->
+                <div class="group rounded-2xl overflow-hidden bg-brand-darker border border-white/5 cursor-pointer">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team Workshop" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 left-4 bg-brand-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">企業賦能</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-white group-hover:text-brand-500 transition-colors">某跨國科技大廠 核心團隊工作坊</h4>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                            針對資源重組與跨國溝通摩擦，導入「山地搜救任務拆解模型」。培訓後團隊決策效率提升，內部專案延遲率顯著下降。
+                        </p>
+                        <div class="flex items-center text-brand-500 text-sm font-semibold">
+                            檢視成效數據 <i class="fa-solid fa-arrow-right-long ml-2 transform group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 2 -->
+                <div class="group rounded-2xl overflow-hidden bg-brand-darker border border-white/5 cursor-pointer">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tech System" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 left-4 bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">專案實績</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors">野外醫學與山難留守制度推動</h4>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                            結合現代化通訊科技與科學化氣象模型，建立系統化的追蹤機制。打破傳統經驗法則，使救援評估精準度提升，獲得官方機構採納。
+                        </p>
+                        <div class="flex items-center text-blue-400 text-sm font-semibold">
+                            了解系統架構 <i class="fa-solid fa-arrow-right-long ml-2 transform group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case 3 -->
+                <div class="group rounded-2xl overflow-hidden bg-brand-darker border border-white/5 cursor-pointer">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1544531586-fde5298cdd40?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="University Lecture" class="w-full h-full object-cover transform group-hover:scale-110 transition duration-700">
+                        <div class="absolute top-4 left-4 bg-brand-accent text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">教學培訓</div>
+                    </div>
+                    <div class="p-6">
+                        <h4 class="text-xl font-bold mb-2 text-white group-hover:text-brand-accent transition-colors">台大、政大 技術講師計畫</h4>
+                        <p class="text-gray-400 text-sm mb-4 line-clamp-3">
+                            於頂尖大專院校擔任戶外技術講師，累計培育超過 500 名學員。專注於建立學員在極端環境下的獨立判斷與危機處理能力。
+                        </p>
+                        <div class="flex items-center text-brand-accent text-sm font-semibold">
+                            查看教學大綱 <i class="fa-solid fa-arrow-right-long ml-2 transform group-hover:translate-x-2 transition-transform"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Blog Section -->
+    <section id="blog" class="py-24 bg-brand-darker border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-block px-3 py-1 rounded-full bg-brand-500/10 text-brand-500 text-sm font-semibold mb-4 border border-brand-500/20">
+                    技術洞見 | Tech Blog
+                </div>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">前瞻思維與產業洞見</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Blog Post 1 -->
+                <a href="#" class="flex flex-col sm:flex-row bg-brand-dark rounded-xl overflow-hidden border border-white/5 hover:border-brand-500/50 transition-colors group">
+                    <div class="sm:w-2/5 h-48 sm:h-auto relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Data Models" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100">
+                    </div>
+                    <div class="sm:w-3/5 p-6 flex flex-col justify-center">
+                        <div class="text-brand-500 text-xs font-bold mb-2 tracking-wider">科技戶外應用</div>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-brand-500 transition-colors">如何利用科學化氣象模型降低攀登風險？</h3>
+                        <p class="text-gray-400 text-sm line-clamp-2 mb-4">傳統天氣預報的侷限性在哪裡？本文深入解析我們如何導入微氣象模型進行更精確的風險評估。</p>
+                        <div class="text-gray-500 text-xs flex items-center gap-2">
+                            <i class="fa-regular fa-calendar"></i> 2024.03.15
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Blog Post 2 -->
+                <a href="#" class="flex flex-col sm:flex-row bg-brand-dark rounded-xl overflow-hidden border border-white/5 hover:border-brand-500/50 transition-colors group">
+                    <div class="sm:w-2/5 h-48 sm:h-auto relative overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Business Mindset" class="w-full h-full object-cover transform group-hover:scale-105 transition duration-500 grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100">
+                    </div>
+                    <div class="sm:w-3/5 p-6 flex flex-col justify-center">
+                        <div class="text-brand-accent text-xs font-bold mb-2 tracking-wider">商業實戰心法</div>
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-brand-accent transition-colors">容錯率為零的決策學：企業CEO該懂的山林法則</h3>
+                        <p class="text-gray-400 text-sm line-clamp-2 mb-4">當資源耗盡、通訊中斷，你該如何領導團隊？從高海拔極限生存看現代企業的敏捷決策。</p>
+                        <div class="text-gray-500 text-xs flex items-center gap-2">
+                            <i class="fa-regular fa-calendar"></i> 2024.02.28
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 bg-brand-dark relative">
+        <!-- Background element -->
+        <div class="absolute inset-0 z-0 bg-[url('https://images.unsplash.com/photo-1516934812613-c3577dcebcce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center opacity-5"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Contact Info & FAQ -->
+                <div>
+                    <div class="inline-block px-3 py-1 rounded-full bg-brand-500/10 text-brand-500 text-sm font-semibold mb-4 border border-brand-500/20">
+                        預約諮詢 | Contact
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">為您的企業設計<br/>專屬突圍方案</h2>
+                    <p class="text-gray-400 mb-10 text-lg">
+                        填寫右側表單，讓我們了解您目前的組織現況與挑戰。我們將在 48 小時內由專人與您聯繫，安排初步的深度診斷會議。
+                    </p>
+
+                    <div class="space-y-6 mb-12">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-white/5 rounded-full flex items-center justify-center text-brand-500 border border-white/10">
+                                <i class="fa-regular fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">商務合作與諮詢</p>
+                                <p class="text-white font-medium">business@rurr-sunlight.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Mini -->
+                    <div class="border-t border-white/10 pt-8 mt-8">
+                        <h4 class="text-xl font-bold mb-4">常見問題 FAQ</h4>
+                        <div class="space-y-4">
+                            <details class="group bg-white/5 rounded-lg p-4 cursor-pointer border border-white/5 open:border-brand-500/30">
+                                <summary class="font-medium text-white flex justify-between items-center">
+                                    客製化專案的評估流程為何？
+                                    <span class="transition group-open:rotate-180 text-brand-500">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </span>
+                                </summary>
+                                <div class="text-gray-400 text-sm mt-3 leading-relaxed">
+                                    收到您的諮詢後，我們會先進行線上深度訪談（約 1 小時），釐清核心營運目標。隨後提供初步的診斷報告與模組建議，確認無誤後才會進入正式報價與執行階段。
+                                </div>
+                            </details>
+                            <details class="group bg-white/5 rounded-lg p-4 cursor-pointer border border-white/5 open:border-brand-500/30">
+                                <summary class="font-medium text-white flex justify-between items-center">
+                                    培訓場地必須在戶外野外嗎？
+                                    <span class="transition group-open:rotate-180 text-brand-500">
+                                        <i class="fa-solid fa-chevron-down"></i>
+                                    </span>
+                                </summary>
+                                <div class="text-gray-400 text-sm mt-3 leading-relaxed">
+                                    不一定。我們會根據您的目標與預算，選擇室內會議室（透過系統化沙盤推演）、室內攀岩/設施場館，或真實的高山野外環境。所有場域皆具備完整的安全控管計畫。
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-brand-darker p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl">
+                    <form id="contactForm" onsubmit="event.preventDefault(); showSuccessMessage();" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-400 mb-2">姓名 / 稱呼 *</label>
+                                <input type="text" id="name" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors" placeholder="請輸入您的姓名">
+                            </div>
+                            <div>
+                                <label for="company" class="block text-sm font-medium text-gray-400 mb-2">公司名稱 *</label>
+                                <input type="text" id="company" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors" placeholder="請輸入公司名稱">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-400 mb-2">公務信箱 *</label>
+                                <input type="email" id="email" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors" placeholder="name@company.com">
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-400 mb-2">聯絡電話</label>
+                                <input type="tel" id="phone" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors" placeholder="09xx-xxx-xxx">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="needs" class="block text-sm font-medium text-gray-400 mb-2">期望解決之痛點 / 需求分類 *</label>
+                            <div class="relative">
+                                <select id="needs" required class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors appearance-none cursor-pointer">
+                                    <option value="" disabled selected class="text-gray-500">請選擇主要需求...</option>
+                                    <option value="team" class="bg-gray-900">核心團隊溝通與危機處理培訓</option>
+                                    <option value="exec" class="bg-gray-900">高階主管逆境領導力專案</option>
+                                    <option value="custom" class="bg-gray-900">企業專屬客製化顧問服務</option>
+                                    <option value="speech" class="bg-gray-900">企業演講與講座邀約</option>
+                                    <option value="other" class="bg-gray-900">其他合作事項</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-400">
+                                    <i class="fa-solid fa-chevron-down text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-400 mb-2">現況描述與其他說明</label>
+                            <textarea id="message" rows="4" class="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-colors" placeholder="請簡述您組織目前遇到的挑戰，或是預期的參與人數、預算規模等..."></textarea>
+                        </div>
+
+                        <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-4 px-8 rounded-lg transition-colors shadow-lg shadow-brand-500/30 text-lg">
+                            送出諮詢申請
+                        </button>
+                        
+                        <!-- Success Message Container -->
+                        <div id="form-success" class="hidden mt-4 p-4 bg-brand-900/50 border border-brand-500/50 rounded-lg text-brand-100 text-center">
+                            <i class="fa-solid fa-circle-check text-brand-500 mr-2"></i> 感謝您的填寫！我們已收到您的資訊，將盡快與您聯繫。
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#010309] border-t border-white/5 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-mountain-sun text-brand-500 text-xl"></i>
+                <span class="font-bold tracking-widest text-lg">Rurr 山徑日光</span>
+            </div>
+            
+            <div class="text-gray-500 text-sm text-center md:text-left">
+                &copy; 2026 Rurr 山徑日光有限公司 All Rights Reserved. <br class="md:hidden" />
+                <span class="hidden md:inline">|</span> 戶外風險控管與企業賦能領導品牌
+            </div>
+
+            <div class="flex gap-4">
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-colors">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:bg-brand-500 hover:text-white transition-colors">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        
+        // Form Submission Feedback
+        function showSuccessMessage() {
+            const form = document.getElementById('contactForm');
+            const successMsg = document.getElementById('form-success');
+            
+            // In a real scenario, you'd send data to a backend here.
+            // For now, we just show the success UI.
+            
+            // Hide inputs/button
+            Array.from(form.elements).forEach(element => {
+                if(element.tagName !== 'FIELDSET') {
+                    if(element.type === 'submit') {
+                        element.disabled = true;
+                        element.classList.add('opacity-50', 'cursor-not-allowed');
+                        element.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-2"></i> 處理中...';
+                    }
+                }
+            });
+
+            // Simulate network request delay
+            setTimeout(() => {
+                successMsg.classList.remove('hidden');
+                form.querySelector('button[type="submit"]').style.display = 'none';
+            }, 800);
+        }
+
+        // Mobile Menu Toggle
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = menu.querySelectorAll('a');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        // Navbar Scroll Effect (Glassmorphism solidifies on scroll)
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 20) {
+                navbar.classList.add('shadow-lg', 'bg-brand-dark/95');
+                navbar.classList.remove('bg-brand-dark/80');
+            } else {
+                navbar.classList.remove('shadow-lg', 'bg-brand-dark/95');
+                navbar.classList.add('bg-brand-dark/80');
+            }
+        });
+        
+        // Add scroll-padding-top to HTML for smooth anchor scrolling offset
+        document.documentElement.style.scrollPaddingTop = '80px'; // Height of the fixed navbar
+    </script>
+</body>
+</html>
